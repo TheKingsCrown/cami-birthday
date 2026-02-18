@@ -46,12 +46,12 @@ body {
 }
 
 #present1 {
-    --pos: translate(500%, -345%);
+    --pos: translate(500%, -365%);
     --rot: rotate(2deg);
 }
 
 #present2 {
-    --pos: translate(380%, -338%);
+    --pos: translate(380%, -358%);
     --rot: rotate(-3deg);
 }
 
