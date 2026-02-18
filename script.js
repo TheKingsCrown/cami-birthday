@@ -1,4 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // add click event to presents
+    document.querySelectorAll(".present").forEach(p => {
+        p.addEventListener("click", function() {
+            this.classList.add("pop-out");
+        });
+    });
 
     // Focus window and scroll to start
     window.focus();
