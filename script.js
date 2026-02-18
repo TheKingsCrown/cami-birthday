@@ -16,18 +16,34 @@ document.addEventListener("DOMContentLoaded", function() {
             return;
         }
         if (event.code === "Space") {
+            // stops counter once it's completed
+            if (section_counter == sections.length) {
+                return;
+            }
+            // resets counters and scrolls to next message
             if (line_counter == message_lines) {
                 section_counter += 1;
                 sections[section_counter].scrollIntoView();
 
                 line_counter = 0;
-                section_message = sections[section_counter].querySelectorAll("h1")
+                section_message = formMessage(sections[section_counter]);
                 message_lines = section_message.length;
             }
+
+            // thumbs through the message one by one
             else {
                 section_message[line_counter].classList.add("fade-in");
                 line_counter += 1;
             }
         }
     });
+    // forms message by appending images at the end
 });
+
+function formMessage(section) {
+    var message = Array.from(section.querySelectorAll("h1"));
+    if (section.querySelector(".birthday-card")) {
+        message.push(section.querySelector(".birthday-card"));
+    }
+    return message;
+}
