@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // allow continuation
     window.addEventListener('keydown', (event) => {
+        if (event.repeat) {
+            return;
+        }
         if (event.code === "Space") {
             if (line_counter == message_lines) {
                 section_counter += 1;
