@@ -16,6 +16,7 @@ body {
 
 .present-room {
     display: inline-block;
+    vertical-align: top;
 }
 
 .present-room img {
@@ -24,7 +25,7 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.1);
     width: 70%;
     height: auto;
-    transform: translate(25%, -2.5%);
+    transform: translate(25%, -3%);
 }
 
 .present {
@@ -45,12 +46,35 @@ body {
 }
 
 #present1 {
-    --pos: translate(500%, -373%);
+    --pos: translate(500%, -345%);
     --rot: rotate(2deg);
 }
 
 #present2 {
-    --pos: translate(380%, -368%);
+    --pos: translate(380%, -338%);
+    --rot: rotate(-3deg);
+}
+
+.voucher {
+    opacity: 0;
+    position: absolute;
+    z-index: 5;
+    transform: translate(-3%, -150%);
+}
+
+.voucher img {
+    display: block;
+    box-shadow: none;
+    border: none;
+}
+
+#voucher1 {
+    --pos: translate(-3%, -150%);
+    --rot: rotate(2deg);
+}
+
+#voucher2 {
+    --pos: translate(-3%, -150%);
     --rot: rotate(-3deg);
 }
 
@@ -77,6 +101,7 @@ body {
 }
 
 .pop-out {
+    z-index: 0;
     animation: popOut 0.5s ease-in forwards;
 }
 
@@ -96,3 +121,18 @@ body {
     }
 }
 
+.pop-in {
+    z-index: 100;
+    animation: popIn 0.5s ease-in forwards;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: var(--pos) scale(0.2);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-3%, -150%) scale(1);
+    }
+}

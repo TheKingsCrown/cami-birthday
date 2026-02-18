@@ -3,6 +3,20 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll(".present").forEach(p => {
         p.addEventListener("click", function() {
             this.classList.add("pop-out");
+            
+            
+            var targetId = this.getAttribute("data-target");
+            var voucher  = document.querySelector(targetId);
+
+            setTimeout(function() {
+                voucher.classList.add("pop-in");
+            }, 400);
+        });
+    });
+    document.querySelectorAll(".voucher").forEach(v => {
+        v.addEventListener("click", function() {
+            this.classList.remove("pop-in");
+            this.classList.add("pop-out");
         });
     });
 
