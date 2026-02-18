@@ -33,20 +33,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // allow continuation
     window.addEventListener('keydown', (event) => {
-        if (event.repeat ||  section_counter == sections.length) {
+        if (event.repeat) {
             return;
         }
-        if (event.code === "Space") {
-            // stops counter once it's completed
-            if (section_counter == sections.length) {
-                return;
-            }
+        if (event.code === "Space" || event.code === "Enter" || event.code === "ArrowDown") {
             // scroll back through the messages
             if (section_index < section_counter) {
                 section_index += 1;
                 sections[section_index].scrollIntoView();
             }
             // resets counters and scrolls to next message
+            
+            // stops counter once it's completed
+            if (section_counter >= sections.length - 1) {
+                return;
+            }
             else if (line_counter == message_lines) {
                 section_counter += 1;
                 section_index += 1;
@@ -63,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 line_counter += 1;
             }
         }
-        if (event.code === "Backspace") {
+        if (event.code === "Backspace" || event.code === "ArrowUp") {
             if (section_index == 0) {
                 return;
             }
