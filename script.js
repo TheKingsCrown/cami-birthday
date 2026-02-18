@@ -28,11 +28,12 @@ document.addEventListener("DOMContentLoaded", function() {
     var section_message = sections[0].querySelectorAll("h1");
     var message_lines = section_message.length;
     var section_counter = 0;
+    var section_index = 0;
     var line_counter = 0;
 
     // allow continuation
     window.addEventListener('keydown', (event) => {
-        if (event.repeat) {
+        if (event.repeat ||  section_counter == sections.length) {
             return;
         }
         if (event.code === "Space") {
@@ -40,9 +41,15 @@ document.addEventListener("DOMContentLoaded", function() {
             if (section_counter == sections.length) {
                 return;
             }
+            // scroll back through the messages
+            if (section_index < section_counter) {
+                section_index += 1;
+                sections[section_index].scrollIntoView();
+            }
             // resets counters and scrolls to next message
-            if (line_counter == message_lines) {
+            else if (line_counter == message_lines) {
                 section_counter += 1;
+                section_index += 1;
                 sections[section_counter].scrollIntoView();
 
                 line_counter = 0;
@@ -55,6 +62,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 section_message[line_counter].classList.add("fade-in");
                 line_counter += 1;
             }
+        }
+        if (event.code === "Backspace") {
+            if (section_index == 0) {
+                return;
+            }
+            section_index -= 1;
+            sections[section_index].scrollIntoView();
         }
     });
     // forms message by appending images at the end
