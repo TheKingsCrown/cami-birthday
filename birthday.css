@@ -14,6 +14,19 @@ body {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
+.present-room {
+    display: inline-block;
+}
+
+.present-room img {
+    display: block;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 70%;
+    height: auto;
+    transform: translate(25%, -2.5%);
+}
+
 .message-text {
     visibility: hidden;
 }
